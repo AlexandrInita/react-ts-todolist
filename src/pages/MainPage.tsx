@@ -4,22 +4,14 @@ import React, { FC,
 } from 'react'
 import { 
   Card, 
-  List,
-  Checkbox, 
-  Popover, 
   Button,
-  Input,
 } from 'antd'
 import { CheckboxChangeEvent } from 'antd/es/checkbox'
+import NewTaskEditor from '../components/MainPage/NewTaskEditor'
+import { TTask } from '../types/task'
+import TaskList from '../components/MainPage/TaskList'
 
 const MainPage: FC = () => {  
-  type TTask = {
-    id: number,
-    title: string,
-    description: string,
-    completed: boolean,
-  }
-
   const [tasks, setTasks] = useState<TTask[]>([])
   const [addState, setAddState] = useState(false)
   const [newTitle, setNewTittle] = useState('')
@@ -30,6 +22,11 @@ const MainPage: FC = () => {
       { id: 1, title: 'Проснуться', description: 'Очень важное дело и самое сложное дело', completed: false },
       { id: 2, title: 'Покушать', description: 'Самое важное дело', completed: false },
       { id: 3, title: 'Поспать', description: 'Лучшее дело сразу после покушать', completed: false },
+      { id: 4, title: 'Поспать 2', description: 'Лучшее дело сразу после покушать', completed: false },
+      { id: 5, title: 'Поспать 3', description: 'Лучшее дело сразу после покушать', completed: false },
+      { id: 6, title: 'Поспать 4', description: 'Лучшее дело сразу после покушать', completed: false },
+      { id: 7, title: 'Поспать 5', description: 'Лучшее дело сразу после покушать', completed: false },
+      { id: 8, title: 'Поспать 6', description: 'Лучшее дело сразу после покушать', completed: false },
     ])
   }, [])
 
@@ -57,6 +54,8 @@ const MainPage: FC = () => {
       completed: false,
     }])
     switchAddState()
+    setNewTittle('')
+    setNewDescription('')
   }
 
   const switchAddState = () => {
@@ -67,7 +66,7 @@ const MainPage: FC = () => {
     <div>
       <Card 
         title={
-        <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <span>Лист задач</span>
           <Button type="primary" onClick={switchAddState}>{addState ? 'Назад' : 'Добавить'}</Button>
         </div>
@@ -76,44 +75,19 @@ const MainPage: FC = () => {
         style={{ height: '400px', width: '400px' }}
       >
         {
-        addState ?
-          <div>
-            <Input 
-              placeholder="Титул" 
-              value={newTitle} 
-              onChange={changeNewTitle}
+          addState ?
+            <NewTaskEditor 
+              newTitle={newTitle}
+              newDescription={newDescription}
+              changeNewTitle={changeNewTitle}
+              changeNewDescription={changeNewDescription}
+              addNewTask={addNewTask}
             />
-            <Input 
-              placeholder="Описание"
-              value={newTitle}
-              style={{ marginTop: '8px' }}
-              onChange={changeNewDescription}
+            :
+            <TaskList 
+              tasks={tasks}
+              changeCompleted={changeCompleted}
             />
-            <Button 
-              type="primary"
-              style={{ marginTop: '8px' }}
-              onClick={addNewTask}
-            >
-              Добавить
-            </Button>
-          </div>
-          :
-          <List
-            itemLayout="horizontal"
-            dataSource={tasks}
-            renderItem={(item, index) => (
-              <List.Item key={item.id} style={{ display: 'flex', justifyContent: 'space-between'}}>
-                <Popover title={item.description}>
-                  {index + 1}. {item.title} ({item.completed.toString()})
-                </Popover>
-
-                <Checkbox 
-                  checked={item.completed} 
-                  onChange={(event: CheckboxChangeEvent) => { changeCompleted(event, index) }}
-                />
-              </List.Item>
-            )}
-          />
         }
       </Card>
     </div>

@@ -14,8 +14,6 @@ import TaskList from '../components/MainPage/TaskList'
 const MainPage: FC = () => {  
   const [tasks, setTasks] = useState<TTask[]>([])
   const [addState, setAddState] = useState(false)
-  const [newTitle, setNewTittle] = useState('')
-  const [newDescription, setNewDescription] = useState('')
 
   useEffect(() => {
     setTasks([
@@ -38,15 +36,7 @@ const MainPage: FC = () => {
     })
   }
 
-  const changeNewTitle = (e : React.ChangeEvent<HTMLInputElement>) => {
-    setNewTittle(state => state = e.target.value)
-  }
-
-  const changeNewDescription = (e : React.ChangeEvent<HTMLInputElement>) => {
-    setNewDescription(state => state = e.target.value)
-  }
-
-  const addNewTask = () => {
+  const addNewTask = (newTitle: string, newDescription: string) => {
     setTasks([...tasks, { 
       id: Number(new Date().getTime()), 
       title: newTitle, 
@@ -54,8 +44,6 @@ const MainPage: FC = () => {
       completed: false,
     }])
     switchAddState()
-    setNewTittle('')
-    setNewDescription('')
   }
 
   const switchAddState = () => {
@@ -76,13 +64,7 @@ const MainPage: FC = () => {
       >
         {
           addState ?
-            <NewTaskEditor 
-              newTitle={newTitle}
-              newDescription={newDescription}
-              changeNewTitle={changeNewTitle}
-              changeNewDescription={changeNewDescription}
-              addNewTask={addNewTask}
-            />
+            <NewTaskEditor addNewTask={addNewTask} />
             :
             <TaskList 
               tasks={tasks}

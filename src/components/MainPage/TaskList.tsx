@@ -22,7 +22,10 @@ const TaskList: FC<TProps> = (
         itemLayout="horizontal"
         dataSource={tasks}
         renderItem={(item, index) => (
-          <List.Item key={item.id} style={{ display: 'flex', justifyContent: 'space-between'}}>
+          <List.Item 
+            key={item.id} 
+            style={{ display: 'flex', justifyContent: 'space-between', background: item.completed ? '#1677ff' : '', padding: '4px 16px', marginTop: '8px' }}
+          >
             <Popover title={item.description}>
               {index + 1}. {item.title}
             </Popover>

@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom'
 import AppRouter from './components/AppRouter'
 import { Layout } from 'antd'
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content, Footer } = Layout
 
 function App() {
   return (
     <Layout style={{  height: '100vh'}}>
-      <Header style={{ display: 'flex', alignItems: 'center' }}>
+      <Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Link to="/">Home</Link>
-          |
           <Link to="/login">Login</Link>
       </Header>
 

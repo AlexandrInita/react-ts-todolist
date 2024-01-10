@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react'
 import { Input, Button, Flex } from 'antd'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 const Login: FC = () => {
   const navigate = useNavigate();

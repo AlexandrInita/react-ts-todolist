@@ -15,6 +15,8 @@ const MainPage: FC = () => {
   const [tasks, setTasks] = useState<TTask[]>([])
   const [addState, setAddState] = useState(false)
 
+  const completedTaskPersent = tasks.reduce((ac, cur) => { return ac + Number(cur.completed) }, 0) / tasks.length * 100
+
   useEffect(() => {
     setTasks([
       { id: 1, title: 'Проснуться', description: 'Очень важное дело и самое сложное дело', completed: false },
@@ -36,13 +38,8 @@ const MainPage: FC = () => {
     })
   }
 
-  const addNewTask = (newTitle: string, newDescription: string) => {
-    setTasks([...tasks, { 
-      id: Number(new Date().getTime()), 
-      title: newTitle, 
-      description: newDescription,
-      completed: false,
-    }])
+  const addNewTask = (newTask: TTask) => {
+    setTasks([...tasks, newTask])
     switchAddState()
   }
 
@@ -55,7 +52,11 @@ const MainPage: FC = () => {
       <Card 
         title={
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span>Лист задач</span>
+          <span>{ 'Лист задач ' } 
+            <span style={{ background: completedTaskPersent !== 0 ? '#76ff03' : '', borderRadius: '8px', padding: '4px 8px' }}>
+              {completedTaskPersent}%
+              </span>
+          </span>
           <Button type="primary" onClick={switchAddState}>{addState ? 'Назад' : 'Добавить'}</Button>
         </div>
       } 

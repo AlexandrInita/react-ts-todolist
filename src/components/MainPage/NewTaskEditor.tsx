@@ -6,9 +6,10 @@ import {
   Input,
   Button
 } from 'antd'
+import { TTask } from '../../types/task'
 
 type TProps = {
-  addNewTask: (newTitle: string, newDescription: string) => void,
+  addNewTask: (newTask: TTask) => void,
 }
 
 const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
@@ -17,7 +18,12 @@ const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
   const [newDescription, setNewDescription] = useState('')
 
   const addTask = () => {
-    addNewTask(newTitle, newDescription)
+    addNewTask({
+      id: Number(new Date().getTime()), 
+      title: newTitle, 
+      description: newDescription,
+      completed: false,
+    })
     setNewTittle('')
     setNewDescription('')
   }

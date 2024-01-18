@@ -10,24 +10,27 @@ import { CheckboxChangeEvent } from 'antd/es/checkbox'
 import NewTaskEditor from '../components/MainPage/NewTaskEditor'
 import { TTask } from '../types/task'
 import TaskList from '../components/MainPage/TaskList'
+import useLocalStorage from '../hooks/localStorage/localStorage'
 
 const MainPage: FC = () => {  
-  const [tasks, setTasks] = useState<TTask[]>([])
+  const [tasks, setTasks] = useLocalStorage<TTask[]>([], 'tasks')
   const [addState, setAddState] = useState(false)
 
   const completedTaskPersent = tasks.reduce((ac, cur) => { return ac + Number(cur.completed) }, 0) / tasks.length * 100
 
   useEffect(() => {
-    setTasks([
-      { id: 1, title: 'Проснуться', description: 'Очень важное дело и самое сложное дело', completed: false },
-      { id: 2, title: 'Покушать', description: 'Самое важное дело', completed: false },
-      { id: 3, title: 'Поспать', description: 'Лучшее дело сразу после покушать', completed: false },
-      { id: 4, title: 'Поспать 2', description: 'Лучшее дело сразу после покушать', completed: false },
-      { id: 5, title: 'Поспать 3', description: 'Лучшее дело сразу после покушать', completed: false },
-      { id: 6, title: 'Поспать 4', description: 'Лучшее дело сразу после покушать', completed: false },
-      { id: 7, title: 'Поспать 5', description: 'Лучшее дело сразу после покушать', completed: false },
-      { id: 8, title: 'Поспать 6', description: 'Лучшее дело сразу после покушать', completed: false },
-    ])
+    if (tasks.length === 0 ) {
+      setTasks([
+        { id: 1, title: 'Проснуться', description: 'Очень важное дело и самое сложное дело', completed: false },
+        { id: 2, title: 'Покушать', description: 'Самое важное дело', completed: false },
+        { id: 3, title: 'Поспать', description: 'Лучшее дело сразу после покушать', completed: false },
+        { id: 4, title: 'Поспать 2', description: 'Лучшее дело сразу после покушать', completed: false },
+        { id: 5, title: 'Поспать 3', description: 'Лучшее дело сразу после покушать', completed: false },
+        { id: 6, title: 'Поспать 4', description: 'Лучшее дело сразу после покушать', completed: false },
+        { id: 7, title: 'Поспать 5', description: 'Лучшее дело сразу после покушать', completed: false },
+        { id: 8, title: 'Поспать 6', description: 'Лучшее дело сразу после покушать', completed: false },
+      ])
+    }
   }, [])
 
   const changeCompleted = (e : CheckboxChangeEvent, index: number) => {

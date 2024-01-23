@@ -11,10 +11,14 @@ import NewTaskEditor from '../components/MainPage/NewTaskEditor'
 import { TTask } from '../types/task'
 import TaskList from '../components/MainPage/TaskList'
 import useLocalStorage from '../hooks/localStorage/localStorage'
+import { 
+  LeftOutlined,
+  PlusOutlined,
+} from '@ant-design/icons'
 
 const MainPage: FC = () => {  
   const [tasks, setTasks] = useLocalStorage<TTask[]>([], 'tasks')
-  const [addState, setAddState] = useState(false)
+  const [isAddState, setIsAddState] = useState(false)
 
   const completedTaskPersent = tasks.reduce((ac, cur) => { return ac + Number(cur.completed) }, 0) / tasks.length * 100
 
@@ -43,11 +47,11 @@ const MainPage: FC = () => {
 
   const addNewTask = (newTask: TTask) => {
     setTasks([...tasks, newTask])
-    switchAddState()
+    switchIsAddState()
   }
 
-  const switchAddState = () => {
-    setAddState(state => state = !state)
+  const switchIsAddState = () => {
+    setIsAddState(state => state = !state)
   }
 
   return (
@@ -60,20 +64,29 @@ const MainPage: FC = () => {
               {completedTaskPersent}%
               </span>
           </span>
-          <Button type="primary" onClick={switchAddState}>{addState ? 'Назад' : 'Добавить'}</Button>
+          <Button 
+            type={isAddState ? 'text' : 'primary'} 
+            icon={isAddState ? <LeftOutlined /> : <PlusOutlined />}
+            onClick={switchIsAddState}
+          >
+           { isAddState ? 'Назад' : 'Добавить' }
+          </Button>
         </div>
       } 
         bordered={false} 
         style={{ height: '400px', width: '400px' }}
       >
         {
-          addState ?
+          isAddState ?
             <NewTaskEditor addNewTask={addNewTask} />
             :
             <TaskList 
               tasks={tasks}
               changeCompleted={changeCompleted}
             />
+        }
+        {
+          
         }
       </Card>
     </div>

@@ -7,6 +7,9 @@ import {
   Button
 } from 'antd'
 import { TTask } from '../../types/task'
+import { 
+  PlusOutlined,
+} from '@ant-design/icons'
 
 type TProps = {
   addNewTask: (newTask: TTask) => void,
@@ -43,6 +46,7 @@ const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
       />
       <Button 
         type="primary"
+        icon={<PlusOutlined />}
         style={{ marginTop: '8px' }}
         onClick={addTask}
       >

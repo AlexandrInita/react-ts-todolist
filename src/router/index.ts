@@ -9,7 +9,7 @@ export interface IRoute {
 
 export enum RouteNames {
   LOGIN = '/login',
-  MAIN = '/'
+  MAIN = '/tasks'
 }
 
 export const publicRoutes: IRoute[] = [

@@ -9,7 +9,7 @@ const Login: FC = () => {
 
   const enter = () => {
     if (login && password) {
-      navigate("/")
+      navigate("/tasks")
     }
   }
 

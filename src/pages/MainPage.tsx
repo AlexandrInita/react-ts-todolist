@@ -75,7 +75,7 @@ const MainPage: FC = () => {
         </div>
       } 
         bordered={false} 
-        style={{ height: '400px', width: '400px' }}
+        style={{ width: '400px' }}
       >
         {
           isAddState ?

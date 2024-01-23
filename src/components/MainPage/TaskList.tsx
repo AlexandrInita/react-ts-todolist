@@ -24,7 +24,8 @@ const TaskList: FC<TProps> = (
         renderItem={(item, index) => (
           <List.Item 
             key={item.id} 
-            style={{ display: 'flex', justifyContent: 'space-between', background: item.completed ? '#1677ff' : '', padding: '4px 16px', marginTop: '8px' }}
+            style={{ display: 'flex', justifyContent: 'space-between', background: item.completed ? '#1677ff' : '', 
+                     padding: '4px 16px', marginTop: '8px', color: item.completed ? 'white' : 'black' }}
           >
             <Popover title={item.description}>
               {index + 1}. {item.title}

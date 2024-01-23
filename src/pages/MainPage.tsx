@@ -20,7 +20,8 @@ const MainPage: FC = () => {
   const [tasks, setTasks] = useLocalStorage<TTask[]>([], 'tasks')
   const [isAddState, setIsAddState] = useState(false)
 
-  const completedTaskPersent = tasks.reduce((ac, cur) => { return ac + Number(cur.completed) }, 0) / tasks.length * 100
+  const completedTaskCount = tasks.reduce((ac: number, cur: TTask) => { return ac + Number(cur.completed) }, 0)
+  const completedTaskPersent = Math.round(completedTaskCount / tasks.length * 100)
 
   useEffect(() => {
     if (tasks.length === 0 ) {
@@ -38,8 +39,8 @@ const MainPage: FC = () => {
   }, [])
 
   const changeCompleted = (e : CheckboxChangeEvent, index: number) => {
-    setTasks((state) => { 
-      return state.map((el, i) => i === index 
+    setTasks((state: TTask[]) => { 
+      return state.map((el: TTask, i: number) => i === index 
         ? { ...el, completed: e.target.checked } 
         : el)
     })

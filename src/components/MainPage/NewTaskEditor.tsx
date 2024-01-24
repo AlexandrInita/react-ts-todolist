@@ -1,6 +1,7 @@
 import React, {
   FC,
   useEffect,
+  useRef,
   useState,
 } from 'react'
 import { 
@@ -24,6 +25,7 @@ const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
   const [newDescription, setNewDescription] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [randomTaskDescription, setRandomTaskDescription] = useState('')
+  const firstInput = useRef<HTMLInputElement>(null) 
 
   const addTask = () => {
     addNewTask({
@@ -62,6 +64,7 @@ const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
   }
 
   useEffect(() => {
+    if (firstInput.current) firstInput.current.focus()
     getRandomTask()
   }, [])
 
@@ -81,6 +84,7 @@ const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
         }
       />
       <Input 
+        ref={firstInput}
         placeholder="Титул" 
         value={newTitle}
         style={{ marginTop: '8px' }} 

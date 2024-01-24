@@ -8,6 +8,7 @@ import {
   Input,
   Button,
   Alert,
+  InputRef,
 } from 'antd'
 import { TTask } from '../../types/task'
 import { 
@@ -25,7 +26,7 @@ const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
   const [newDescription, setNewDescription] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [randomTaskDescription, setRandomTaskDescription] = useState('')
-  const firstInput = useRef<HTMLInputElement>(null) 
+  const firstInput = useRef<InputRef>(null) 
 
   const addTask = () => {
     addNewTask({

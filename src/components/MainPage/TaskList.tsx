@@ -4,10 +4,13 @@ import React, {
 import { 
   List,
   Popover,
-  Checkbox
+  Checkbox,
+  Button,
 } from 'antd'
 import { TTask } from '../../types/task'
 import { CheckboxChangeEvent } from 'antd/es/checkbox'
+import { EyeOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 
 type TProps = {
   tasks: TTask[], 
@@ -27,7 +30,13 @@ const TaskList: FC<TProps> = (
             style={{ display: 'flex', justifyContent: 'space-between', background: item.completed ? '#1677ff' : '', 
                      padding: '4px 16px', marginTop: '8px', color: item.completed ? 'white' : 'black' }}
           >
-            <Popover title={item.description}>
+            <Popover title={
+              <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                {item.description}
+                <Link to={`/tasks/${item.id}`} style={{ marginLeft: '8px' }}>
+                  <EyeOutlined style={{ color: "#1677ff", fontSize: '150%'}} />
+                </Link>
+              </div>}>
               {index + 1}. {item.title}
             </Popover>
 

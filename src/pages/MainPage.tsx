@@ -86,9 +86,6 @@ const MainPage: FC = () => {
               changeCompleted={changeCompleted}
             />
         }
-        {
-          
-        }
       </Card>
     </div>
   )

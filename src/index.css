@@ -30,3 +30,40 @@ body {
   background-color: #b0b0b0;
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5)
 }
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
+
+.mr-2 {
+  margin-right: 8px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}

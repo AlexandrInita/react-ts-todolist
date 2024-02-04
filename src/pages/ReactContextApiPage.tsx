@@ -7,12 +7,12 @@ import {
   Card, 
 } from 'antd'
 import UIContext from '../contexts/UIContext'
-import TopBlock from '../components/ReactProviderPage/TopBlock'
-import SizeBlock from '../components/ReactProviderPage/SizeBlock'
-import UIComponentBlock from '../components/ReactProviderPage/UIComponentBlock'
-import ColorBlock from '../components/ReactProviderPage/ColorBlock'
-import LabelBlock from '../components/ReactProviderPage/LabelBlock'
-import LinkBlock from '../components/ReactProviderPage/LinkBlock'
+import TopBlock from '../components/ReactContextApiPage/TopBlock'
+import SizeBlock from '../components/ReactContextApiPage/SizeBlock'
+import UIComponentBlock from '../components/ReactContextApiPage/UIComponentBlock'
+import ColorBlock from '../components/ReactContextApiPage/ColorBlock'
+import LabelBlock from '../components/ReactContextApiPage/LabelBlock'
+import LinkBlock from '../components/ReactContextApiPage/LinkBlock'
 import { useSearchParams } from 'react-router-dom'
 
 type sizeType = 'small' | 'middle' | 'large'

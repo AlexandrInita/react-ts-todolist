@@ -6,7 +6,7 @@ import UIContext from '../../contexts/UIContext'
 import { Card } from 'antd'
 import { Link } from 'react-router-dom'
 
-const TopBlock: FC = () => {
+const LinkBlock: FC = () => {
   const { label, size, color } = useContext(UIContext)
 
   return (
@@ -16,4 +16,4 @@ const TopBlock: FC = () => {
   )
 }
 
-export default TopBlock
+export default LinkBlock

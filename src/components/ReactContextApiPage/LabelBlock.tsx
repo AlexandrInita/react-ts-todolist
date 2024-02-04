@@ -4,7 +4,7 @@ import React, {
 import UIContext from '../../contexts/UIContext'
 import { Card, Input } from 'antd'
 
-const TopBlock: FC = () => {
+const LabelBlock: FC = () => {
   const { label, dispatch } = useContext(UIContext)
 
   return (
@@ -17,4 +17,4 @@ const TopBlock: FC = () => {
   )
 }
 
-export default TopBlock
+export default LabelBlock

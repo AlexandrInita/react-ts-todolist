@@ -1,4 +1,6 @@
-import { FC, useContext } from "react";
+import { 
+  FC, 
+  useContext, } from "react";
 import UIContext from "../../contexts/UIContext";
 import { 
   Card,
@@ -6,7 +8,7 @@ import {
 } from "antd";
 
 
-const SizeBlock: FC = () => {
+const ColorBlock: FC = () => {
   const { color, dispatch } = useContext(UIContext)
 
   return (
@@ -22,4 +24,4 @@ const SizeBlock: FC = () => {
   )
 }
 
-export default SizeBlock
+export default ColorBlock

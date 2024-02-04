@@ -55,7 +55,7 @@ function reducer(state: UIObjectType, action: { type: string, payload: string | 
   }
 }
 
-const ReactProviderPage: FC = () => {  
+const ReactContextApiPage: FC = () => {  
   const [searchParams, setSeachParams] = useSearchParams()
   const sizeParam = searchParams.get('size')
   const colorParam = searchParams.get('color')
@@ -94,4 +94,4 @@ const ReactProviderPage: FC = () => {
   )
 }
 
-export default ReactProviderPage
+export default ReactContextApiPage

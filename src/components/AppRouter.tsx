@@ -5,7 +5,7 @@ import Login from '../pages/Login'
 import TaskListPage from '../pages/TaskListPage'
 import TaskPage from '../pages/TaskPage'
 import MainPage from '../pages/MainPage'
-import ReactProviderPage from '../pages/ReactProviderPage'
+import ReactContextApiPage from '../pages/ReactContextApiPage'
 
 const AppRouter = () => {
   return (
@@ -14,7 +14,7 @@ const AppRouter = () => {
       <Route path='/login' element={<Login />}/>
       <Route path='/' element={<MainPage />} />
       <Route path='/tasks' element={<TaskListPage />} />
-      <Route path='/react-provider' element={<ReactProviderPage />} />
+      <Route path='/react-provider' element={<ReactContextApiPage />} />
       <Route path='/tasks'>
         <Route path=':id' element={<TaskPage />} />
       </Route>

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 const MainPage: FC = () => {  
   const links = [
     { link: '/tasks', name: 'Todo-list' },
-    { link: '/react-provider', name: 'React Provider' },
+    { link: '/react-provider', name: 'React ContextApi' },
     { link: '/', name: 'О проекте' },
   ]
 

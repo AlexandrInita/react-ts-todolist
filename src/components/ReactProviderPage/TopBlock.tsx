@@ -1,5 +1,6 @@
 import React, {
-  FC, useContext
+  FC, 
+  useContext,
 } from 'react'
 import UIContext from '../../contexts/UIContext'
 import { 
@@ -22,7 +23,7 @@ const TopBlock: FC = () => {
         <Button 
           type="text" 
           icon={<LeftOutlined />}
-          onClick={() => { navigate(-1) }}
+          onClick={() => { navigate('/') }}
         >
           Назад
         </Button>

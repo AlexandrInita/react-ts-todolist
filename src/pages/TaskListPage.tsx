@@ -15,7 +15,6 @@ import {
   LeftOutlined,
   PlusOutlined,
 } from '@ant-design/icons'
-import { red } from '@ant-design/colors';
 
 const TaskListPage: FC = () => {  
   const [tasks, setTasks] = useLocalStorage<TTask[]>([], 'tasks')

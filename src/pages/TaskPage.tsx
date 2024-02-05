@@ -23,8 +23,8 @@ const TaskPage: FC = () => {
   useEffect(() => { 
     const task = tasks.find(el => el.id === Number(id))
   
-    setTittle(state => state = task.title)
-    setDescription(state => state = task.description)
+    setTittle(() => task.title)
+    setDescription(() => task.description)
   }, [tasks, id])
 
   return (

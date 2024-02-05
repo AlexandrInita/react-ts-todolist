@@ -46,7 +46,7 @@ const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
   async function getRandomTask() {
     try {
       // const data = await boredTaskApi.getRandomTask()
-      setIsLoading(state => state = true)
+      setIsLoading(() => true)
       const data = {
         accessibility:0,
         activity:"Learn Morse code",
@@ -60,7 +60,7 @@ const NewTaskEditor: FC<TProps> = ({ addNewTask }: TProps ) => {
     } catch(e) {
       console.log(e)
     } finally {
-      setIsLoading(state => state = false)
+      setIsLoading(() => false)
     }
   }
 

@@ -1,3 +1,5 @@
+import { fakeUserApi } from "../api"
+
 const initState = { 
   userName: ''
  }
@@ -32,6 +34,15 @@ function logout() {
   return { type: actions.clearName }
 }
 
-export { setName, logout } 
+function setFakeUserName() {
+  return async function(dispatch, getState) {
+    const data = await fakeUserApi.getRandomUser()
+    
+    dispatch({ type: actions.setName, payload: data.results[0].login.username })
+  }
+}
+
+
+export { setName, logout, setFakeUserName } 
 
 export default userReducer

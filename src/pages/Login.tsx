@@ -1,14 +1,18 @@
 import React, { FC, useState } from 'react'
 import { Input, Button, Flex } from 'antd'
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from 'react-redux'
+import { setName } from '../store/user'
 
 const Login: FC = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
 
   const enter = () => {
     if (login && password) {
+      dispatch(setName(login))
       navigate("/")
     }
   }

@@ -1,48 +1,37 @@
 import { fakeUserApi } from "../api"
+import { createSlice } from "@reduxjs/toolkit"
 
-const initState = { 
+const initialState = { 
   userName: ''
- }
-
-enum actions {
-  setName = 'user/setName',
-  clearName = 'user/clearName'
 }
 
-function userReducer(state = initState, action: { type: string, payload: any }) {
-  switch(action.type) {
-    case actions.setName:
-      return {
-        ...state,
-        userName: action.payload,
-      } 
-    case actions.clearName:
-        return {
-          ...state,
-          userName: '',
-        } 
-    default: 
-      return state
-  } 
- }
+const userSlice = createSlice({
+  name: 'account',
+  initialState,
+  reducers: {
+    setName(state, action) {
+      state.userName = action.payload
+    },
+    clearName(state) {
+      state.userName = ''
+    }
+  }
+})
 
-function setName(name: string) {
-  return { type: actions.setName, payload: name }
-}
+export const { setName, clearName } = userSlice.actions
 
-function logout() {
-  return { type: actions.clearName }
-}
+export default userSlice.reducer
 
-function setFakeUserName() {
-  return async function(dispatch, getState) {
-    const data = await fakeUserApi.getRandomUser()
-    
-    dispatch({ type: actions.setName, payload: data.results[0].login.username })
+export function logout() {
+  return function(dispatch) {
+    dispatch(clearName())
   }
 }
 
+export function setFakeUserName() {
+  return async function(dispatch, getState) {
+    const data = await fakeUserApi.getRandomUser()
 
-export { setName, logout, setFakeUserName } 
-
-export default userReducer
+    dispatch(setName(data.results[0].login.username))
+  }
+}

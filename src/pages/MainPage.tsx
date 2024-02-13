@@ -12,7 +12,7 @@ const MainPage: FC = () => {
     { link: '/tasks', name: 'Лист задач' },
     { link: '/react-provider', name: 'React ContextApi' },
     { link: '/memoization', name: 'Мемоизация' },
-    { link: '/', name: 'О проекте' },
+    { link: '/about', name: 'О проекте' },
   ]
 
   return (

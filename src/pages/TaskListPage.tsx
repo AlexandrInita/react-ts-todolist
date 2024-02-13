@@ -15,10 +15,13 @@ import {
   LeftOutlined,
   PlusOutlined,
 } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
 
 const TaskListPage: FC = () => {  
   const [tasks, setTasks] = useLocalStorage<TTask[]>([], 'tasks')
   const [isAddState, setIsAddState] = useState(false)
+
+  const navigate = useNavigate()
 
   const completedTaskCount = tasks.reduce((ac: number, cur: TTask) => { return ac + Number(cur.completed) }, 0)
   const completedTaskPersent = Math.round(completedTaskCount / tasks.length * 100)
@@ -59,7 +62,12 @@ const TaskListPage: FC = () => {
     <div>
       <Card 
         title={
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div className="d-flex justify-space-between align-items-center">
+          <Button 
+            type="text" 
+            icon={<LeftOutlined />}
+            onClick={() => { navigate('/') }}
+          />
           <span>{ 'Лист задач ' } 
             <span style={{ background: completedTaskPersent !== 0 ? '#76ff03' : '', borderRadius: '8px', padding: '4px 8px' }}>
               {completedTaskPersent}%

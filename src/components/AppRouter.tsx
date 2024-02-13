@@ -7,6 +7,7 @@ import TaskPage from '../pages/TaskPage'
 import MainPage from '../pages/MainPage'
 import ReactContextApiPage from '../pages/ReactContextApiPage'
 import MemoizationPage  from '../pages/MemoizationPage'
+import AboutPage from '../pages/AboutPage'
 
 const AppRouter = () => {
   return (
@@ -20,7 +21,8 @@ const AppRouter = () => {
         <Route path=':id' element={<TaskPage />} />
       </Route>
       <Route path='/memoization' element={<MemoizationPage />} />
-      
+      <Route path='/about' element={<AboutPage />} />
+
       {
     //   priveteRoutes.map(route => 
     //       <Route 
